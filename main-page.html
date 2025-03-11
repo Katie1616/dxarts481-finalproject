@@ -6,7 +6,7 @@
     <title>Terms and Conditions</title>
     <link rel="stylesheet" href="stylesheets/style.css">
 </head>
-<body class"main">
+<body class="main">
 
     <div class="container">
         <video class="glitch" id="video" autoplay></video>
@@ -37,7 +37,7 @@
         //Recursive Button
         function createButton() {
             const newButton = document.createElement('button');
-            newButton.innerHTML = `<img src="..//images//image_${Math.floor(Math.random()*299)}.jpg">`;
+            newButton.innerHTML = `<img src="images//image_${Math.floor(Math.random()*299)}.jpg">`;
             newButton.addEventListener('click', createButton);
             container.appendChild(newButton);
             //position new button randomly

@@ -11,6 +11,7 @@
     <div class="container">
         <video class="glitch" id="video" autoplay></video>
         <button>click me</button>
+        <button class="exit"> X </button>
     </div>
     
     <script>
@@ -28,7 +29,7 @@
         });
 
 
-
+        let timeStart = new Date();
         let tap = 0; 
         // Edit Video 
         let videoElement = document.querySelector('video');
@@ -73,6 +74,25 @@
         initialButton.addEventListener('click', function() {
             createButton();
             initialButton.style.cssText = `display: none;`;
+        })
+
+        const exitButton = document.querySelector('.exit');
+        exitButton.addEventListener('click', function() {
+            if (tap>=3){
+                createButton();
+            } 
+            else if (tap %2 ===0){
+                exitButton.style.cssText += `height: ${(100)}px; width: ${(100)}px;`; 
+                createButton(); 
+            } 
+            else{
+                let timeEnd = new Date();
+                const finalMessage = document.querySelector('.container');
+                const tapCount= document.createElement('p');
+                tapCount.innerHTML = `<p>You pressed ${tap - 1} ads </p>`;
+                const timeElapsed = document.createElement('p');
+                timeElapsed.innerHTML = `<p> You consumed for ${(timeEnd.getTime() - timeStart.getTime())/1000} </p>`;
+            }
 
         })
 

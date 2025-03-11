@@ -21,7 +21,7 @@ div button.start{
   align-items: center;
 }
 
-body {
+body.main {
   margin: 0;
   height: 100vh;
   display: flex;

@@ -8,7 +8,7 @@
 </head>
 <body class="main">
 
-    <div class="container">
+    <div class="container" id="demo">
         <video class="glitch" id="video" autoplay></video>
         <button>click me</button>
         <button class="exit"> X </button>
@@ -78,21 +78,23 @@
 
         const exitButton = document.querySelector('.exit');
         exitButton.addEventListener('click', function() {
-            if (tap>=3){
-                createButton();
-            } 
-            else if (tap %2 ===0){
-                exitButton.style.cssText += `height: ${(100)}px; width: ${(100)}px;`; 
-                createButton(); 
-            } 
-            else{
+            // if (tap=3){
+            // createButton();
+            // } 
+            // else if (tap %5 ===0){
+            //     exitButton.style.cssText += `height: ${(50)}px; width: ${(50)}px;`; 
+            //     createButton(); 
+            // } 
+            // else{
                 let timeEnd = new Date();
-                const finalMessage = document.querySelector('.container');
-                const tapCount= document.createElement('p');
-                tapCount.innerHTML = `<p>You pressed ${tap - 1} ads </p>`;
-                const timeElapsed = document.createElement('p');
-                timeElapsed.innerHTML = `<p> You consumed for ${(timeEnd.getTime() - timeStart.getTime())/1000} </p>`;
-            }
+                document.getElementById("demo").innerHTML =`<p> You pressed ${tap} ads and you consumed for ${(timeEnd.getTime() - timeStart.getTime())/1000} </p> `; 
+
+                // const finalMessage = document.querySelector('.container');
+                // const tapCount= document.createElement('p');
+                // tapCount.innerHTML = `<p>You pressed ${tap - 1} ads </p>`;
+                // const timeElapsed = document.createElement('p');
+                // timeElapsed.innerHTML = `<p> You consumed for ${(timeEnd.getTime() - timeStart.getTime())/1000} </p>`;
+            //}
 
         })
 

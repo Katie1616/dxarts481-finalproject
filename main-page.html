@@ -9,10 +9,11 @@
 <body class="main">
 
     <div class="container" id="demo">
-        <video id="video"></video>
+        <video id="video" autoplay></video>
         <button>click me</button>
-        <button class="exit"> X </button>
     </div>
+    
+    <button class="exit"> X </button>
     
     <script>
         // Video 
@@ -30,6 +31,7 @@
 
         let timeStart = new Date();
         let tap = 0; 
+        let exitTap = 0;
         // Edit Video 
         let videoElement = document.querySelector('video');
         let bodyElement = document.querySelector('body');
@@ -55,13 +57,13 @@
                 videoElement.style.display = 'block';
 
                 // make size bigger 
-                videoElement.style.cssText += `height: ${Math.max(0, (initialHeight - (tap * 100)))}; width: ${Math.max(0, (initialWidth - (tap * 100)))}px;`; 
+                videoElement.style.cssText += `height: ${Math.max(0, (initialHeight - (tap * 5)))}; width: ${Math.max(0, (initialWidth - (tap * 5)))}px;`; 
                 
-                // increase opacity 
-                videoElement.style.cssText += `opacity: ${(tap*0.1)};`; 
-                // decrease loop 
                 // reverse screen and buttons 
                 bodyElement.style.cssText += 'transform: scaleX(-1); z-index: -1; position:relative;';
+                
+                // more clicked reduce exit tap steps 
+                exitTap+=1; 
 
             }
             //videoElement.style.display = 'none';
@@ -77,7 +79,6 @@
             initialButton.style.cssText = `display: none;`;
         })
 
-        let exitTap = 0;
         const exitButton = document.querySelector('.exit');
         exitButton.addEventListener('click', function() {
             exitTap+=1;

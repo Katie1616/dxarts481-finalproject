@@ -43,11 +43,14 @@ video {
 }
 
 .exit{
-  background-color: red;
-  font-size: 50px;
+  background-color: rgb(195, 6, 6);
+  font-size: 45px;
   position: fixed;
   top: 0;
   right: 0;
+  height: 60px; 
+  width: 60px;
+  margin: 5px; 
 }
 
 /*   transform: scaleX(-1);

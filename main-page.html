@@ -76,25 +76,20 @@
             initialButton.style.cssText = `display: none;`;
         })
 
+        let exitTap = 0;
         const exitButton = document.querySelector('.exit');
         exitButton.addEventListener('click', function() {
-            // if (tap=3){
-            // createButton();
-            // } 
-            // else if (tap %5 ===0){
-            //     exitButton.style.cssText += `height: ${(50)}px; width: ${(50)}px;`; 
-            //     createButton(); 
-            // } 
-            // else{
+            exitTap+=1;
+            if (exitTap<=4){
+                createButton();
+            } 
+            else if (exitTap>=5 && exitTap <=8){
+                exitButton.style.cssText += `height: ${((10-exitTap)*10)}px; width: ${((10-exitTap)*10)}px; font-size: ${(((10-exitTap)*10)-12)}px;`; 
+                createButton(); 
+            } else {
                 let timeEnd = new Date();
-                document.getElementById("demo").innerHTML =`<p> You pressed ${tap} ads and you consumed for ${(timeEnd.getTime() - timeStart.getTime())/1000} </p> `; 
-
-                // const finalMessage = document.querySelector('.container');
-                // const tapCount= document.createElement('p');
-                // tapCount.innerHTML = `<p>You pressed ${tap - 1} ads </p>`;
-                // const timeElapsed = document.createElement('p');
-                // timeElapsed.innerHTML = `<p> You consumed for ${(timeEnd.getTime() - timeStart.getTime())/1000} </p>`;
-            //}
+                document.getElementById("demo").innerHTML =`<p> You pressed ${tap} ads and you consumed for ${(timeEnd.getTime() - timeStart.getTime())/1000} seconds.</p> `; 
+            }
 
         })
 

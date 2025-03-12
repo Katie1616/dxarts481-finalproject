@@ -9,7 +9,7 @@
 <body class="main">
 
     <div class="container" id="demo">
-        <video class="glitch" id="video" autoplay></video>
+        <video id="video"></video>
         <button>click me</button>
         <button class="exit"> X </button>
     </div>
@@ -18,7 +18,6 @@
         // Video 
         navigator.mediaDevices
         .getUserMedia({
-            audio: true,
             video: true,
         }).then((stream) => {
             const videoElement = document.querySelector('video');
@@ -35,6 +34,9 @@
         let videoElement = document.querySelector('video');
         let bodyElement = document.querySelector('body');
         let container = document.querySelector('.container');
+
+        let initialHeight = 400;
+        let initialWidth = 650;
         //Recursive Button
         function createButton() {
             const newButton = document.createElement('button');
@@ -50,14 +52,10 @@
 
             //create glitch 
             if (tap%5 ===0){
-                console.log(tap)
-                // hold screen longer 
-                setTimeout(function() {
-                    videoElement.style.display = 'block';
-                }, tap * 1000);
+                videoElement.style.display = 'block';
 
                 // make size bigger 
-                videoElement.style.cssText += `height: ${(tap*25 + 100)}px; width: ${(tap*25 + 200)}px;`; 
+                videoElement.style.cssText += `height: ${Math.max(0, (initialHeight - (tap * 100)))}; width: ${Math.max(0, (initialWidth - (tap * 100)))}px;`; 
                 
                 // increase opacity 
                 videoElement.style.cssText += `opacity: ${(tap*0.1)};`; 
@@ -66,8 +64,11 @@
                 bodyElement.style.cssText += 'transform: scaleX(-1); z-index: -1; position:relative;';
 
             }
-            videoElement.style.display = 'none';
-            bodyElement.style.transform = '';
+            //videoElement.style.display = 'none';
+            setTimeout(function() {
+                videoElement.style.display = 'none';
+                bodyElement.style.transform = '';
+            }, 3000); 
         }
 
         const initialButton = document.querySelector('button');
